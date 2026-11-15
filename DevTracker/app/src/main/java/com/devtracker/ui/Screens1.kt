@@ -1,5 +1,6 @@
 package com.devtracker.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -137,7 +138,15 @@ fun weekValues(sessions: List<Session>, weeks: Int): List<Float> {
             item { Spacer(Modifier.height(72.dp)) }
         }
         Box(Modifier.align(Alignment.BottomEnd).padding(16.dp)) {
-            ExtendedFloatingActionButton({ menu = true }, icon = { Icon(Icons.Default.Add, null) }, text = { Text("Quick add") })
+            ExtendedFloatingActionButton(
+                    onClick = { menu = true },
+                    icon = {
+                        Icon(Icons.Default.Add, contentDescription = "Add")
+                    },
+                    text = {
+                        Text("Quick add")
+                    }
+                ),
             DropdownMenu(menu, { menu = false }) {
                 DropdownMenuItem(text = { Text("Log study time") }, onClick = { menu = false; dialog = "log" })
                 DropdownMenuItem(text = { Text("Schedule study session") }, onClick = { menu = false; dialog = "STUDY" })

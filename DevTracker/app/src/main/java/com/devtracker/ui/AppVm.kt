@@ -74,7 +74,7 @@ class AppVm(app: Application) : AndroidViewModel(app) {
         logSession(((System.currentTimeMillis() - s) / 60000).toInt().coerceAtLeast(1), domain, refType, refId)
     }
 
-    fun setCfHandle(h: String) { cfHandle = h; run { repo.prefs.setCfHandle(h) } }
+    fun updateCfHandle(h: String) { cfHandle = h; run { repo.prefs.setCfHandle(h) } }
     fun syncCodeforces(handle: String) {
         cfStatus = "Syncing…"
         run { cfStatus = try { "Imported ${repo.syncCodeforces(handle)} new rating entries" } catch (e: Exception) { "Sync failed: ${e.message}" } }

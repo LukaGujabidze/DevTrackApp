@@ -263,7 +263,7 @@ fun weekValues(sessions: List<Session>, weeks: Int): List<Float> {
                 LineChart(ratings.map { it.rating }, 2100)
                 Button({ rate = true }) { Text("Add rating") }
                 OutlinedTextField(handle, { handle = it }, label = { Text("Codeforces handle (optional sync)") }, singleLine = true, modifier = Modifier.fillMaxWidth())
-                OutlinedButton({ vm.setCfHandle(handle.trim()); vm.syncCodeforces(handle) }) { Text("Sync ratings from Codeforces") }
+                OutlinedButton({ vm.updateCfHandle(handle.trim()); vm.syncCodeforces(handle) }) { Text("Sync ratings from Codeforces") }
                 vm.cfStatus?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
                 ratings.reversed().take(5).forEach { r -> Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("${fmt(r.date)}  ${r.rating}  ${r.contest}", Modifier.weight(1f)); IconButton({ vm.deleteRating(r) }) { Icon(Icons.Default.Close, "Delete") }

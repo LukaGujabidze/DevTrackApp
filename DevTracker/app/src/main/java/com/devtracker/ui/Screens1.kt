@@ -146,7 +146,7 @@ fun weekValues(sessions: List<Session>, weeks: Int): List<Float> {
                     text = {
                         Text("Quick add")
                     }
-                ),
+                )
             DropdownMenu(menu, { menu = false }) {
                 DropdownMenuItem(text = { Text("Log study time") }, onClick = { menu = false; dialog = "log" })
                 DropdownMenuItem(text = { Text("Schedule study session") }, onClick = { menu = false; dialog = "STUDY" })

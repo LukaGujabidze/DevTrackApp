@@ -1,5 +1,4 @@
-
-name: Build DevTracker APK
+name: Build OmniDroid APK
 
 on:
   push:
@@ -20,23 +19,21 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Gradle 8.7
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.7'
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
         with:
           packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
 
-      - name: Build Debug APK
-        working-directory: DevTracker
+      - name: Build OmniDroid Debug APK
+        working-directory: OmniDroid
         run: gradle assembleDebug
 
-      - name: Upload APK
+      - name: Upload OmniDroid APK
         uses: actions/upload-artifact@v4
         with:
-          name: DevTracker-APK
-          path: DevTracker/app/build/outputs/apk/debug/*.apk
+          name: OmniDroid-APK
+          path: OmniDroid/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
